@@ -12,37 +12,46 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-
-
 
 @Entity
 @Table(name="usuario", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    @Basic
+    private Integer id;
     @Column(nullable = false)
-    String username;
-    String password;
+    private String username;
+    private String password;
     @Column
-    String lastname;
-    String firstname;
-    String email;
-    String address;
-    String numberphone;
+    private String lastname;
+    private String firstname;
+    private String email;
+    private String address;
+    private String numberphone;
+    private Integer estado = 1;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_perfil")
+    private Perfil perfil;
 
-    @Enumerated(EnumType.STRING) 
-    Rol role;
 
-    @Override
+    public Perfil getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-      return List.of(new SimpleGrantedAuthority((role.name())));
+    	return List.of(new SimpleGrantedAuthority(perfil.getPerfil()));
     }
     @Override
     public boolean isAccountNonExpired() {
@@ -110,10 +119,11 @@ public class Usuario implements UserDetails {
 	public void setNumberphone(String numberphone) {
 		this.numberphone = numberphone;
 	}
-	public Rol getRole() {
-		return role;
+	
+	public Integer getEstado() {
+		return estado;
 	}
-	public void setRole(Rol role) {
-		this.role = role;
+	public void setEstado(Integer estado) {
+		this.estado = estado;
 	}
 }

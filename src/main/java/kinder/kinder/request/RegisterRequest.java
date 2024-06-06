@@ -5,8 +5,10 @@ package kinder.kinder.request;
 public class RegisterRequest {
 	
 	
+	
+	String username;
 	public RegisterRequest(String username, String password, String firstname, String lastname, String email,
-			String address, String numberphone) {
+			String address, String numberphone, String perfil) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -15,16 +17,24 @@ public class RegisterRequest {
 		this.email = email;
 		this.address = address;
 		this.numberphone = numberphone;
-		
+		this.perfil = perfil;
 	}
-	String username;
+	
 	String password;
 	String firstname;
 	String lastname;
 	String email;
 	String address;
 	String numberphone;
-
+	String perfil;
+	
+	
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 	public String getUsername() {
 		return username;
 	}
