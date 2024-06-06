@@ -18,6 +18,17 @@ public class Perfil implements GrantedAuthority {
 	@Column(nullable = false)
     String perfil;
 	
+	@Column
+	private Integer estado = 1;
+	
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
 	public Perfil() {}
 	
 	@Override
