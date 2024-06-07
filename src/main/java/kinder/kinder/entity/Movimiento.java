@@ -1,7 +1,6 @@
-package kinder.kinder.entity.pagos;
+package kinder.kinder.entity;
 
 import jakarta.persistence.*;
-import kinder.kinder.entity.Usuario;
 
 import java.time.LocalDateTime;
 
@@ -27,5 +26,66 @@ public class Movimiento {
     @JoinColumn(name = "tipo_movimiento_id")
     private TipoMovimiento tipoMovimiento;
 
-    // getters y setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Caja getCaja() {
+        return caja;
+    }
+
+    public void setCaja(Caja caja) {
+        this.caja = caja;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public TipoMovimiento getTipoMovimiento() {
+        return tipoMovimiento;
+    }
+
+    public void setTipoMovimiento(TipoMovimiento tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
+
+    @Override
+    public String toString() {
+        return "Movimiento [id=" + id + ", fechaHora=" + fechaHora + ", monto=" + monto + ", descripcion=" + descripcion
+                + ", caja=" + caja + ", usuario=" + usuario + ", tipoMovimiento=" + tipoMovimiento + "]";
+    }
+
 }
