@@ -3,11 +3,12 @@ package kinder.kinder.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "metodo_pagos")
 public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String nombre;
 
     public Long getId() {

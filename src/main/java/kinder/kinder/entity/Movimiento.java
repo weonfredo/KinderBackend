@@ -1,29 +1,38 @@
 package kinder.kinder.entity;
 
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
+@Table(name = "movimientos")
 public class Movimiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private LocalDateTime fechaHora;
     private Double monto;
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "caja_id")
+    @JoinColumn(name = "id_caja")
     private Caja caja;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_movimiento_id")
+    @JoinColumn(name = "id_tipo_movimiento")
     private TipoMovimiento tipoMovimiento;
 
     public Long getId() {

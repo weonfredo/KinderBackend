@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "turno_caja")
 public class TurnoCaja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private LocalDateTime fechaHoraInicio;
     private LocalDateTime fechaHoraFin;
     private Double saldoInicial;
@@ -86,5 +87,4 @@ public class TurnoCaja {
                 + usuario + "]";
     }
 
-    
 }

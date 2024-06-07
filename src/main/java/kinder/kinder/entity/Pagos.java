@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "pagos")
 public class Pagos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private LocalDateTime fechaPago;
 
     @ManyToOne
