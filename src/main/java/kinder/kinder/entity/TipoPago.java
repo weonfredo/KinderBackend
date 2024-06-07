@@ -3,7 +3,7 @@ package kinder.kinder.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class TipoMovimiento {
+public class TipoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +37,7 @@ public class TipoMovimiento {
 
     @Override
     public String toString() {
-        return "TipoMovimiento [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+        return "TipoPago [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
     }
 
 }

@@ -3,13 +3,12 @@ package kinder.kinder.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class TipoMovimiento {
+public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
-    private String descripcion;
 
     public Long getId() {
         return id;
@@ -27,17 +26,9 @@ public class TipoMovimiento {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     @Override
     public String toString() {
-        return "TipoMovimiento [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+        return "MetodoPago [id=" + id + ", nombre=" + nombre + "]";
     }
 
 }
