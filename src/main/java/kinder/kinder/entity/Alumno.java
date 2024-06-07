@@ -28,6 +28,8 @@ public class Alumno {
 	private String sexo; 
 	private String lugar_nacimiento;
 	private String direccion; 
+	private Integer estado=1;
+	private String estado_financiero="NO DEUDOR"; 
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_aula")
@@ -108,12 +110,25 @@ public class Alumno {
 	public void setAula(Aula aula) {
 		this.aula = aula;
 	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
+	public String getEstado_financiero() {
+		return estado_financiero;
+	}
+
+	public void setEstado_financiero(String estado_financiero) {
+		this.estado_financiero = estado_financiero;
+	}
 	
 	
-	
-	
-	
-		
+
 	
 
 }
