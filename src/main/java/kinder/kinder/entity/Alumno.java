@@ -2,6 +2,9 @@ package kinder.kinder.entity;
 
 import java.util.Date;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,6 +18,8 @@ import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="alumnos", uniqueConstraints = {@UniqueConstraint(columnNames = {"dni"})})
+@SQLDelete(sql="UPDATE alumnos SET estado = 0 WHERE id=?")
+@Where(clause = "estado = 1")
 public class Alumno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

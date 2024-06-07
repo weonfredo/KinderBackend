@@ -1,5 +1,4 @@
 package kinder.kinder.controller;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,37 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kinder.kinder.entity.Usuario;
-import kinder.kinder.service.IUsuarioService;
+import kinder.kinder.entity.Competencia;
+import kinder.kinder.service.ICompetenciaService;
 
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioController {
+@RequestMapping("/competencia")
+public class CompetenciaController {
+
 	@Autowired
-	private IUsuarioService servicioUsuario;
-	
+	ICompetenciaService servicioCompetencia;
+
 	@GetMapping("/todos")
-	public List<Usuario> buscarTodos(){
-		return servicioUsuario.buscarTodos();
+	public List<Competencia> buscarTodos(){
+		return servicioCompetencia.buscarTodos();
 	}
-	 @PostMapping("/registro")
-	 public Usuario guardar(@RequestBody Usuario usuario) {
-		 servicioUsuario.guardar(usuario);
-		 return usuario;
+	
+	@PostMapping("/registro")
+	 public Competencia guardar(@RequestBody Competencia competencia) {
+		servicioCompetencia.guardar(competencia);
+		 return competencia;
 	 }
 	 @PutMapping("/modificar")
-	 public Usuario modificar(@RequestBody Usuario usuario) {
-		 servicioUsuario.modificar(usuario);
-		 return usuario;
+	 public Competencia modificar(@RequestBody Competencia competencia) {
+		 servicioCompetencia.modificar(competencia);
+		 return competencia;
 	 }
 	 @GetMapping("/buscar/{id}")
-	 public Optional<Usuario> buscarId(@PathVariable("id") Integer id){
-		 return servicioUsuario.buscarId(id);
+	 public Optional<Competencia> buscarId(@PathVariable("id") Integer id){
+		 return servicioCompetencia.buscarId(id);
 		 
 	 }
 	 @DeleteMapping("/eliminar/{id}")
 	 public String eliminar(@PathVariable("id") Integer id) {
-		 servicioUsuario.eliminar(id);
-		 return "Usuario eliminado";
+		 servicioCompetencia.eliminar(id);
+		 return "Competencia eliminada";
 	 }
-}
+
+	}
