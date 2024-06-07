@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kinder.kinder.entity.Alumno;
-import kinder.kinder.service.IAlumnoService;
+import kinder.kinder.entity.Aula;
+import kinder.kinder.service.IAulaService;
+
 
 @RestController
-@RequestMapping("/alumno")
-public class AlumnoController {
-
+@RequestMapping("/aula")
+public class AulaController {
+	
 	@Autowired
-	IAlumnoService servicioAlumno;
+	IAulaService servicioAula;
 
 	@GetMapping("/todos")
-	public List<Alumno> buscarTodos(){
-		return servicioAlumno.buscarTodos();
+	public List<Aula> buscarTodos(){
+		return servicioAula.buscarTodos();
 	}
 	
 	@PostMapping("/registro")
-	 public Alumno guardar(@RequestBody Alumno alumno) {
-		servicioAlumno.guardar(alumno);
-		 return alumno;
+	 public Aula guardar(@RequestBody Aula aula) {
+		servicioAula.guardar(aula);
+		 return aula;
 	 }
 	 @PutMapping("/modificar")
-	 public Alumno modificar(@RequestBody Alumno alumno) {
-		 servicioAlumno.modificar(alumno);
-		 return alumno;
+	 public Aula modificar(@RequestBody Aula aula) {
+		 servicioAula.modificar(aula);
+		 return aula;
 	 }
 	 @GetMapping("/buscar/{id}")
-	 public Optional<Alumno> buscarId(@PathVariable("id") Integer id){
-		 return servicioAlumno.buscarId(id);
+	 public Optional<Aula> buscarId(@PathVariable("id") Integer id){
+		 return servicioAula.buscarId(id);
 		 
 	 }
 	 @DeleteMapping("/eliminar/{id}")
 	 public String eliminar(@PathVariable("id") Integer id) {
-		 servicioAlumno.eliminar(id);
-		 return "Alumno eliminado";
+		 servicioAula.eliminar(id);
+		 return "Aula eliminado";
 	 }
 
-	}
-
+}
