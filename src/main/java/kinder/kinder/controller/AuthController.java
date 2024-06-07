@@ -11,27 +11,24 @@ import kinder.kinder.request.LoginRequest;
 import kinder.kinder.request.RegisterRequest;
 import kinder.kinder.service.AuthService;
 
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    
-    public AuthController(AuthService authService) {
-		super();
-		this.authService = authService;
-	}
 
-	private final AuthService authService;
-    
+    public AuthController(AuthService authService) {
+        super();
+        this.authService = authService;
+    }
+
+    private final AuthService authService;
+
     @PostMapping(value = "login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request)
-    {
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
     }
 
     @PostMapping(value = "register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request)
-    {
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
 }
