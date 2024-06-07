@@ -1,8 +1,15 @@
 package kinder.kinder.entity;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pagos")
@@ -14,15 +21,15 @@ public class Pagos {
     private LocalDateTime fechaPago;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_tipo_pago")
     private TipoPago tipoPago;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_metodo_pago")
     private MetodoPago metodoPago;
 
     public Long getId() {
