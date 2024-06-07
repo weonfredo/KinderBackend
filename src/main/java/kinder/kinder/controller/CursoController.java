@@ -12,39 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kinder.kinder.entity.Competencia;
-import kinder.kinder.service.ICompetenciaService;
-
+import kinder.kinder.entity.Curso;
+import kinder.kinder.service.ICursoService;
 @RestController
-@RequestMapping("/competencia")
-public class CompetenciaController {
-
+@RequestMapping("/curso")
+public class CursoController {
 	@Autowired
-	ICompetenciaService servicioCompetencia;
+	ICursoService servicioCurso;
 
 	@GetMapping("/todos")
-	public List<Competencia> buscarTodos(){
-		return servicioCompetencia.buscarTodos();
+	public List<Curso> buscarTodos(){
+		return servicioCurso.buscarTodos();
 	}
 	
 	@PostMapping("/registro")
-	 public Competencia guardar(@RequestBody Competencia competencia) {
-		servicioCompetencia.guardar(competencia);
-		 return competencia;
+	 public Curso guardar(@RequestBody Curso curso) {
+		servicioCurso.guardar(curso);
+		 return curso;
 	 }
 	 @PutMapping("/modificar")
-	 public Competencia modificar(@RequestBody Competencia competencia) {
-		 servicioCompetencia.modificar(competencia);
-		 return competencia;
+	 public Curso modificar(@RequestBody Curso curso) {
+		 servicioCurso.modificar(curso);
+		 return curso;
 	 }
 	 @GetMapping("/buscar/{id}")
-	 public Optional<Competencia> buscarId(@PathVariable("id") Integer id){
-		 return servicioCompetencia.buscarId(id);
+	 public Optional<Curso> buscarId(@PathVariable("id") Integer id){
+		 return servicioCurso.buscarId(id);
 		 
 	 }
 	 @DeleteMapping("/eliminar/{id}")
 	 public String eliminar(@PathVariable("id") Integer id) {
-		 servicioCompetencia.eliminar(id);
+		 servicioCurso.eliminar(id);
 		 return "Competencia eliminada";
 	 }
 
