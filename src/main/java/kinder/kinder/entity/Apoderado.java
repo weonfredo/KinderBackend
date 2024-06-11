@@ -15,7 +15,7 @@ public class Apoderado {
 	private Integer id;
 	
 	@Column
-	private Integer dni;
+	private String dni;
 	private String nombres;
 	private String apellidos;
 	private String telefono;
@@ -31,10 +31,11 @@ public class Apoderado {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getDni() {
+	
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(Integer dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getNombres() {

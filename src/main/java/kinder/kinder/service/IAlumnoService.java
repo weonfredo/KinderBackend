@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import kinder.kinder.entity.Alumno;
+import kinder.kinder.request.AlumnoRequest;
 
 public interface IAlumnoService {
 	
 	List<Alumno> buscarTodos();
-	void guardar(Alumno alumno);
-	void modificar(Alumno alumno);
-	Optional<Alumno> buscarId(Integer id);
+	void guardar(AlumnoRequest alumno);
+	void modificar(AlumnoRequest alumno);
+	Optional<Alumno> buscarId(String dni);
 	void eliminar(Integer id);
 
 }

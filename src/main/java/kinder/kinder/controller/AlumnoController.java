@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kinder.kinder.entity.Alumno;
+import kinder.kinder.request.AlumnoRequest;
 import kinder.kinder.service.IAlumnoService;
 
 @RestController
@@ -29,18 +30,18 @@ public class AlumnoController {
 	}
 	
 	@PostMapping("/registro")
-	 public Alumno guardar(@RequestBody Alumno alumno) {
+	 public AlumnoRequest guardar(@RequestBody AlumnoRequest alumno) {
 		servicioAlumno.guardar(alumno);
 		 return alumno;
 	 }
 	 @PutMapping("/modificar")
-	 public Alumno modificar(@RequestBody Alumno alumno) {
+	 public AlumnoRequest modificar(@RequestBody AlumnoRequest alumno) {
 		 servicioAlumno.modificar(alumno);
 		 return alumno;
 	 }
-	 @GetMapping("/buscar/{id}")
-	 public Optional<Alumno> buscarId(@PathVariable("id") Integer id){
-		 return servicioAlumno.buscarId(id);
+	 @GetMapping("/buscar/{dni}")
+	 public Optional<Alumno> buscarId(@PathVariable("dni") String dni){
+		 return servicioAlumno.buscarId(dni);
 		 
 	 }
 	 @DeleteMapping("/eliminar/{id}")

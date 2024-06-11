@@ -1,4 +1,4 @@
-package kinder.kinder.config;
+/*package kinder.kinder.config;
 
 
 import org.springframework.boot.CommandLineRunner;
@@ -45,3 +45,4 @@ public class DataInitializer
         };
     }
 }
+*/

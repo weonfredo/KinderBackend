@@ -48,6 +48,19 @@ public class Alumno {
 	@JoinColumn(name = "id_aula")
 	private Aula aula;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_apoderado")
+	private Apoderado apoderado;
+	
+	
+	public Apoderado getApoderado() {
+		return apoderado;
+	}
+
+	public void setApoderado(Apoderado apoderado) {
+		this.apoderado = apoderado;
+	}
+
 	public Alumno () {
 		
 	}

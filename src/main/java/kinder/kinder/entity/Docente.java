@@ -41,6 +41,7 @@ public class Docente {
     @Column(nullable = false)
     private String sexo;
     
+    
  // Getters y setters
 
 	public String getDni() {
