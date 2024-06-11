@@ -21,9 +21,6 @@ public class Aula {
 	private String nombre;
 	private String descripcion;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_grado_seccion")
-	private GradoSecciones gradoSeccion;
 	
 	public Aula() {
 		

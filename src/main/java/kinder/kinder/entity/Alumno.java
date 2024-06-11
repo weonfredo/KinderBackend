@@ -37,9 +37,17 @@ public class Alumno {
 	private String estado_financiero="NO DEUDOR"; 
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_grado")
+	private Grado grado;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_seccion")
+	private Seccion seccion;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_aula")
 	private Aula aula;
-
+	
 	public Alumno () {
 		
 	}
@@ -108,14 +116,6 @@ public class Alumno {
 		this.direccion = direccion;
 	}
 
-	public Aula getAula() {
-		return aula;
-	}
-
-	public void setAula(Aula aula) {
-		this.aula = aula;
-	}
-
 	public Integer getEstado() {
 		return estado;
 	}
@@ -130,6 +130,30 @@ public class Alumno {
 
 	public void setEstado_financiero(String estado_financiero) {
 		this.estado_financiero = estado_financiero;
+	}
+
+	public Grado getGrado() {
+		return grado;
+	}
+
+	public void setGrado(Grado grado) {
+		this.grado = grado;
+	}
+
+	public Seccion getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(Seccion seccion) {
+		this.seccion = seccion;
+	}
+
+	public Aula getAula() {
+		return aula;
+	}
+
+	public void setAula(Aula aula) {
+		this.aula = aula;
 	}
 	
 	
