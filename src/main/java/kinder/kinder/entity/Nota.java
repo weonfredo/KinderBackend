@@ -32,7 +32,11 @@ public class Nota {
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
     
- // Getters y setters
+    
+    
+ 
+
+	// Getters y setters
 	public Long getId() {
 		return id;
 	}
