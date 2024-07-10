@@ -1,10 +1,15 @@
 package kinder.kinder.entity;
 
-
 import java.time.LocalDate;
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,42 +17,72 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "docentes")
+@SQLDelete(sql = "UPDATE docentes SET estado = 0 WHERE id=?")
+@Where(clause = "estado = 1")
 public class Docente {
 
-    @Id
-    private String dni;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(nullable = false)
-    private String nombres;
+	@Column
+	private String dni;
+	@Column
+	private String nombres;
 
-    @Column(nullable = false)
-    private String apellidos;
+	@Column
+	private String apellidos;
 
-    @Column(nullable = false)
-    private String telefono;
+	@Column
+	private String telefono;
 
-    @Column(nullable = false)
-    private String direccion;
+	@Column
+	private String direccion;
 
-    @Column(nullable = false)
-    private String email;
+	@Column
+	private String email;
 
-    @Column(nullable = false)
-    private LocalDate fechaContratacion;
+	@Column
+	private LocalDate fechaContratacion;
 
-    @Column(nullable = false)
-    private String tituloAcademico;
+	@Column
+	private String tituloAcademico;
 
-    @Column(nullable = false)
-    private String especialidad;
+	@Column
+	private String especialidad;
 
-    @Column(nullable = false)
-    private String sexo;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
+	@Column
+	private String sexo;
+	private Integer estado = 1;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
- // Getters y setters
+	// Getters y setters
 
 	public String getDni() {
 		return dni;
@@ -128,6 +163,5 @@ public class Docente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-    
-}
 
+}

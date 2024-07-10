@@ -1,12 +1,19 @@
 package kinder.kinder.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import kinder.kinder.entity.Docente;
+import kinder.kinder.request.DocenteRequest;
 
 public interface IDocenteService {
-    List<Docente> findAll();
-    Docente findById(String dni);
-    Docente save(Docente docente);
-    void deleteById(String dni);
+    List<Docente> buscarTodos();
+
+    Docente guardar(DocenteRequest registro);
+
+    Docente modificar(DocenteRequest registro);
+
+    Optional<Docente> buscarId(Integer id);
+
+    void eliminar(Integer id);
 }

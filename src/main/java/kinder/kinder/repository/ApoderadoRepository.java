@@ -8,6 +8,6 @@ import kinder.kinder.entity.Apoderado;
 
 public interface ApoderadoRepository extends JpaRepository<Apoderado, Integer> {
 
-	Optional<Apoderado> findByDni(String dniApoderado);
+	Optional<Apoderado> findByDni(String dni);
 
 }

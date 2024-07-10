@@ -1,5 +1,6 @@
 package kinder.kinder.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kinder.kinder.entity.Alumno;
+import kinder.kinder.entity.Usuario;
+import kinder.kinder.repository.AlumnoRepository;
 import kinder.kinder.request.AlumnoRequest;
 import kinder.kinder.service.IAlumnoService;
 
@@ -23,32 +26,42 @@ public class AlumnoController {
 
 	@Autowired
 	IAlumnoService servicioAlumno;
+	@Autowired
+	private AlumnoRepository alumnoRepository;
 
 	@GetMapping("/todos")
-	public List<Alumno> buscarTodos(){
+	public List<Alumno> buscarTodos() {
 		return servicioAlumno.buscarTodos();
 	}
-	
+
 	@PostMapping("/registro")
-	 public AlumnoRequest guardar(@RequestBody AlumnoRequest alumno) {
+	public AlumnoRequest guardar(@RequestBody AlumnoRequest alumno) {
 		servicioAlumno.guardar(alumno);
-		 return alumno;
-	 }
-	 @PutMapping("/modificar")
-	 public AlumnoRequest modificar(@RequestBody AlumnoRequest alumno) {
-		 servicioAlumno.modificar(alumno);
-		 return alumno;
-	 }
-	 @GetMapping("/buscar/{dni}")
-	 public Optional<Alumno> buscarId(@PathVariable("dni") String dni){
-		 return servicioAlumno.buscarId(dni);
-		 
-	 }
-	 @DeleteMapping("/eliminar/{id}")
-	 public String eliminar(@PathVariable("id") Integer id) {
-		 servicioAlumno.eliminar(id);
-		 return "Alumno eliminado";
-	 }
+		return alumno;
+	}
+
+	@PutMapping("/modificar")
+	public AlumnoRequest modificar(@RequestBody AlumnoRequest alumno) {
+		servicioAlumno.modificar(alumno);
+		return alumno;
+	}
+
+	@GetMapping("/buscar/{dni}")
+	public Optional<Alumno> buscarId(@PathVariable("dni") String dni) {
+		return servicioAlumno.buscarId(dni);
 
 	}
 
+	@DeleteMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable("id") Integer id) {
+		servicioAlumno.eliminar(id);
+		return "Alumno eliminado";
+	}
+
+	@GetMapping("/usuario/{dni}")
+	public List<Alumno> getEmpleado(@PathVariable String dni) {
+		Optional<Alumno> optionalEmpleado = alumnoRepository.findByDni(dni);
+		return optionalEmpleado.map(Collections::singletonList).orElse(Collections.emptyList());
+	}
+
+}
