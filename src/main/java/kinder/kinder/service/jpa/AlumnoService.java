@@ -17,89 +17,90 @@ import kinder.kinder.service.IAlumnoService;
 
 @Service
 public class AlumnoService implements IAlumnoService {
-	
-	@Autowired
-	private AlumnoRepository alumnoRepository;
-	
-	@Autowired
-	private AulaRepository aulaRepository;
-	
-	@Autowired
-	private ApoderadoRepository apoderadoRepository;
-	
-	
-	
-	public List<Alumno> buscarTodos(){
-		return alumnoRepository.findAll();
-	}
 
-	@Override
-	public void guardar(AlumnoRequest registro) {
-		
-		if (alumnoRepository.findByDni(registro.getDni()).isPresent()) {
-            throw new IllegalArgumentException("El alumno con DNI " + registro.getDni() + " ya existe.");
+        @Autowired
+        private AlumnoRepository alumnoRepository;
+
+        @Autowired
+        private AulaRepository aulaRepository;
+
+        @Autowired
+        private ApoderadoRepository apoderadoRepository;
+
+        public List<Alumno> buscarTodos() {
+                return alumnoRepository.findAll();
         }
 
-        Aula aula = aulaRepository.findByNombre(registro.getAula())
-                .orElseThrow(() -> new IllegalArgumentException("Aula no encontrada: " + registro.getAula()));
-        Apoderado apoderado = apoderadoRepository.findByDni(registro.getDniApoderado())
-                .orElseThrow(() -> new IllegalArgumentException("Apoderado no encontrado: " + registro.getDniApoderado()));
-        
+        @Override
+        public void guardar(AlumnoRequest registro) {
 
-        Alumno alumno = new Alumno();
-        alumno.setDni(registro.getDni());
-        alumno.setNombres(registro.getNombres());
-        alumno.setApellidos(registro.getApellidos());
-        alumno.setFecha_nacimiento(registro.getFecha_nacimiento());
-        alumno.setSexo(registro.getSexo());
-        alumno.setLugar_nacimiento(registro.getLugar_nacimiento());
-        alumno.setDireccion(registro.getDireccion());
-        alumno.setEstado_financiero(registro.getEstado_financiero());
-        alumno.setAula(aula);
-        alumno.setApoderado(apoderado);
+                if (alumnoRepository.findByDni(registro.getDni()).isPresent()) {
+                        throw new IllegalArgumentException("El alumno con DNI " + registro.getDni() + " ya existe.");
+                }
 
-        alumnoRepository.save(alumno);
-		
-	}
+                Aula aula = aulaRepository.findById(registro.getId_aula())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "Aula no encontrada: " + registro.getId_aula()));
+                Apoderado apoderado = apoderadoRepository.findById(registro.getId_apoderado())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "Apoderado no encontrado: " + registro.getId_apoderado()));
 
-	@Override
-	public void modificar(AlumnoRequest registro) {
+                Alumno alumno = new Alumno();
+                alumno.setDni(registro.getDni());
+                alumno.setNombres(registro.getNombres());
+                alumno.setApellidos(registro.getApellidos());
+                alumno.setFecha_nacimiento(registro.getFecha_nacimiento());
+                alumno.setSexo(registro.getSexo());
+                alumno.setLugar_nacimiento(registro.getLugar_nacimiento());
+                alumno.setDireccion(registro.getDireccion());
+                alumno.setEstado_financiero(registro.getEstado_financiero());
+                alumno.setAula(aula);
+                alumno.setApoderado(apoderado);
 
-        Alumno alumno = alumnoRepository.findByDni(registro.getDni())
-                .orElseThrow(() -> new IllegalArgumentException("El alumno con DNI " + registro.getDni() + " no existe."));
+                alumnoRepository.save(alumno);
 
+        }
 
-        Aula aula = aulaRepository.findByNombre(registro.getAula())
-                .orElseThrow(() -> new IllegalArgumentException("Aula no encontrada: " + registro.getAula()));
-        Apoderado apoderado = apoderadoRepository.findByDni(registro.getDniApoderado())
-                .orElseThrow(() -> new IllegalArgumentException("Apoderado no encontrado: " + registro.getDniApoderado()));
+        @Override
+        public void modificar(AlumnoRequest registro) {
 
-        alumno.setNombres(registro.getNombres());
-        alumno.setApellidos(registro.getApellidos());
-        alumno.setFecha_nacimiento(registro.getFecha_nacimiento());
-        alumno.setSexo(registro.getSexo());
-        alumno.setLugar_nacimiento(registro.getLugar_nacimiento());
-        alumno.setDireccion(registro.getDireccion());
-        alumno.setEstado_financiero(registro.getEstado_financiero());
-        alumno.setAula(aula);
-        alumno.setApoderado(apoderado);
+                Alumno alumno = alumnoRepository.findByDni(registro.getDni())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "El alumno con DNI " + registro.getDni() + " no existe."));
 
+                Aula aula = aulaRepository.findById(registro.getId_aula())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "Aula no encontrada: " + registro.getId_aula()));
+                Apoderado apoderado = apoderadoRepository.findById(registro.getId_apoderado())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "Apoderado no encontrado: " + registro.getId_apoderado()));
 
-        alumnoRepository.save(alumno);
-    }
+                alumno.setNombres(registro.getNombres());
+                alumno.setApellidos(registro.getApellidos());
+                alumno.setFecha_nacimiento(registro.getFecha_nacimiento());
+                alumno.setSexo(registro.getSexo());
+                alumno.setLugar_nacimiento(registro.getLugar_nacimiento());
+                alumno.setDireccion(registro.getDireccion());
+                alumno.setEstado_financiero(registro.getEstado_financiero());
+                alumno.setAula(aula);
+                alumno.setApoderado(apoderado);
 
-	@Override
-	public Optional<Alumno> buscarId(String dni) {
-		return Optional.ofNullable(alumnoRepository.findByDni(dni)
-                .orElseThrow(() -> new IllegalArgumentException("El alumno con DNI " + dni + " no existe.")));
-	}
+                alumnoRepository.save(alumno);
+        }
 
-	@Override
-	public void eliminar(Integer id) {
-	    if (!alumnoRepository.existsById(id)) {
-	        throw new IllegalArgumentException("El alumno con ID " + id + " no existe.");
-	    }
-	    alumnoRepository.deleteById(id);
-	}
+        @Override
+        public Optional<Alumno> buscarId(String dni) {
+                return Optional.ofNullable(alumnoRepository.findByDni(dni)
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                                "El alumno con DNI " + dni + " no existe.")));
+        }
+
+        @Override
+        public void eliminar(Integer id) {
+                if (!alumnoRepository.existsById(id)) {
+                        throw new IllegalArgumentException("El alumno con ID " + id + " no existe.");
+                }
+                alumnoRepository.deleteById(id);
+        }
 
 }
