@@ -22,29 +22,30 @@ import kinder.kinder.service.ISucursalService;
 public class SucursalController {
 	@Autowired
 	private ISucursalService servicioUsuario;
-	
+
 	@GetMapping("/todos")
-	public List<Sucursal> buscarTodos(){
+	public List<Sucursal> buscarTodos() {
 		return servicioUsuario.buscarTodos();
 	}
-	 @PostMapping("/registro")
-	 public Sucursal guardar(@RequestBody SucursalRequest usuario) {
-		 return servicioUsuario.guardar(usuario);
-	 }
-	 @PutMapping("/modificar")
-	 public Sucursal modificar(@RequestBody SucursalRequest usuario) {
-		 
-		 return servicioUsuario.modificar(usuario);
-	 }
-	 @GetMapping("/buscar/{id}")
-	 public Optional<Sucursal> buscarId(@PathVariable("id") Integer id){
-		 return servicioUsuario.buscarId(id);
-		 
-	 }
-	 @DeleteMapping("/eliminar/{id}")
-	 public String eliminar(@PathVariable("id") Integer id) {
-		 servicioUsuario.eliminar(id);
-		 return "Sucursal eliminado";
-	 }
-}
 
+	@PostMapping("/registro")
+	public Sucursal guardar(@RequestBody SucursalRequest sucursal) {
+		return servicioUsuario.guardar(sucursal);
+	}
+
+	@PutMapping("/modificar")
+	public Sucursal modificar(@RequestBody SucursalRequest sucursal) {
+		return servicioUsuario.modificar(sucursal);
+	}
+
+	@GetMapping("/buscar/{id}")
+	public Optional<Sucursal> buscarId(@PathVariable("id") Integer id) {
+		return servicioUsuario.buscarId(id);
+	}
+
+	@DeleteMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable("id") Integer id) {
+		servicioUsuario.eliminar(id);
+		return "Sucursal eliminada";
+	}
+}

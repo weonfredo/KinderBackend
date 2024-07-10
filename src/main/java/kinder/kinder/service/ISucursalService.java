@@ -8,9 +8,13 @@ import kinder.kinder.request.SucursalRequest;
 
 public interface ISucursalService {
 
-    List<Sucursal> buscarTodos();
+	List<Sucursal> buscarTodos();
+
 	Sucursal guardar(SucursalRequest sucursal);
+
 	Sucursal modificar(SucursalRequest sucursal);
+
 	Optional<Sucursal> buscarId(Integer id);
+
 	void eliminar(Integer id);
 }
