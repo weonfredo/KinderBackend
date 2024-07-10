@@ -41,7 +41,7 @@ public class Sucursal {
     @ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_empresa")
 	private Empresa empresa;
-
+    
     
     public Sucursal() {
     }

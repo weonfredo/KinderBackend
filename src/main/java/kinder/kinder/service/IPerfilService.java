@@ -7,8 +7,8 @@ import kinder.kinder.entity.Perfil;
 
 public interface IPerfilService {
 	List<Perfil> buscarTodos();
-	void guardar(Perfil perfil);
-	void modificar(Perfil perfil);
+	Perfil guardar(Perfil perfil);
+	Perfil modificar(Perfil perfil);
 	Optional<Perfil> buscarId(Integer id);
 	void eliminar(Integer id);
 }

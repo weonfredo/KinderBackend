@@ -20,14 +20,15 @@ public class PerfilService implements IPerfilService{
 	}
 
 	@Override
-	public void guardar(Perfil perfil) {
+	public Perfil guardar(Perfil perfil) {
 		perfilRepository.save(perfil);
-		
+		return perfil;
 	}
 
 	@Override
-	public void modificar(Perfil perfil){
+	public Perfil modificar(Perfil perfil){
 		perfilRepository.save(perfil);
+		return perfil;
 		
 	}
 

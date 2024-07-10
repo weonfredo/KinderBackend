@@ -9,13 +9,9 @@ import org.springframework.stereotype.Service;
 import kinder.kinder.entity.Alumno;
 import kinder.kinder.entity.Apoderado;
 import kinder.kinder.entity.Aula;
-import kinder.kinder.entity.Grado;
-import kinder.kinder.entity.Seccion;
 import kinder.kinder.repository.AlumnoRepository;
 import kinder.kinder.repository.ApoderadoRepository;
 import kinder.kinder.repository.AulaRepository;
-import kinder.kinder.repository.GradoRepository;
-import kinder.kinder.repository.SeccionRepository;
 import kinder.kinder.request.AlumnoRequest;
 import kinder.kinder.service.IAlumnoService;
 
@@ -31,11 +27,6 @@ public class AlumnoService implements IAlumnoService {
 	@Autowired
 	private ApoderadoRepository apoderadoRepository;
 	
-	@Autowired
-	private GradoRepository gradoRepository;
-	
-	@Autowired
-	private SeccionRepository seccionRepository;
 	
 	
 	public List<Alumno> buscarTodos(){
@@ -53,10 +44,7 @@ public class AlumnoService implements IAlumnoService {
                 .orElseThrow(() -> new IllegalArgumentException("Aula no encontrada: " + registro.getAula()));
         Apoderado apoderado = apoderadoRepository.findByDni(registro.getDniApoderado())
                 .orElseThrow(() -> new IllegalArgumentException("Apoderado no encontrado: " + registro.getDniApoderado()));
-        Grado grado = gradoRepository.findByNombre(registro.getGrado())
-                .orElseThrow(() -> new IllegalArgumentException("Grado no encontrado: " + registro.getGrado()));
-        Seccion seccion = seccionRepository.findByNombre(registro.getSeccion())
-                .orElseThrow(() -> new IllegalArgumentException("Sección no encontrada: " + registro.getSeccion()));
+        
 
         Alumno alumno = new Alumno();
         alumno.setDni(registro.getDni());
@@ -85,11 +73,6 @@ public class AlumnoService implements IAlumnoService {
                 .orElseThrow(() -> new IllegalArgumentException("Aula no encontrada: " + registro.getAula()));
         Apoderado apoderado = apoderadoRepository.findByDni(registro.getDniApoderado())
                 .orElseThrow(() -> new IllegalArgumentException("Apoderado no encontrado: " + registro.getDniApoderado()));
-        Grado grado = gradoRepository.findByNombre(registro.getGrado())
-                .orElseThrow(() -> new IllegalArgumentException("Grado no encontrado: " + registro.getGrado()));
-        Seccion seccion = seccionRepository.findByNombre(registro.getSeccion())
-                .orElseThrow(() -> new IllegalArgumentException("Sección no encontrada: " + registro.getSeccion()));
-
 
         alumno.setNombres(registro.getNombres());
         alumno.setApellidos(registro.getApellidos());
