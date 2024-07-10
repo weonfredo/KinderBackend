@@ -17,35 +17,33 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="alumnos", uniqueConstraints = {@UniqueConstraint(columnNames = {"dni"})})
-@SQLDelete(sql="UPDATE alumnos SET estado = 0 WHERE id=?")
+@Table(name = "alumnos", uniqueConstraints = { @UniqueConstraint(columnNames = { "dni" }) })
+@SQLDelete(sql = "UPDATE alumnos SET estado = 0 WHERE id=?")
 @Where(clause = "estado = 1")
 public class Alumno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column
 	private String dni;
 	private String nombres;
 	private String apellidos;
 	private Date fecha_nacimiento;
-	private String sexo; 
+	private String sexo;
 	private String lugar_nacimiento;
-	private String direccion; 
-	private Integer estado=1;
-	private String estado_financiero="NO DEUDOR"; 
-	
-	
+	private String direccion;
+	private Integer estado = 1;
+	private String estado_financiero = "NO DEUDOR";
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_aula")
 	private Aula aula;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_apoderado")
 	private Apoderado apoderado;
-	
-	
+
 	public Apoderado getApoderado() {
 		return apoderado;
 	}
@@ -54,10 +52,10 @@ public class Alumno {
 		this.apoderado = apoderado;
 	}
 
-	public Alumno () {
-		
+	public Alumno() {
+
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -145,9 +143,5 @@ public class Alumno {
 	public void setAula(Aula aula) {
 		this.aula = aula;
 	}
-	
-	
-
-	
 
 }
