@@ -1,4 +1,5 @@
-/*package kinder.kinder.config;
+/*
+package kinder.kinder.config;
 
 
 import org.springframework.boot.CommandLineRunner;
@@ -27,15 +28,15 @@ public class DataInitializer
         	perfil.setPerfil("ADMINISTRADOR");
         	perfilRepository.save(perfil);
         	perfil = perfilRepository.findByPerfil("ADMINISTRADOR").orElseThrow();
-        	if (!usuarioRepository.existsByUsername("eduysting@gmail.com")) {
+        	if (!usuarioRepository.existsByUsername("leandro")) {
         	Usuario usuario = new Usuario();
-    		usuario.setUsername("eduysting@gmail.com");
+    		usuario.setUsername("lramirezcenepo@gmail.com");
     		usuario.setPassword(passwordEncoder.encode("12345678"));
-    		usuario.setFirstname("Eduardo Abel");
-    		usuario.setLastname("Padilla Coral");
-    		usuario.setEmail("eduysting@gmail.com");
+    		usuario.setFirstname("Leandro Enrique");
+    		usuario.setLastname("Ramírez Cenepo");
+    		usuario.setEmail("lramirezcenepo@gmail.com");
     		usuario.setAddress("Tarapoto");
-    		usuario.setNumberphone("921183257");
+    		usuario.setNumberphone("968494861");
     		usuario.setPerfil(perfil);
         	
     			

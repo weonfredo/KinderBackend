@@ -23,6 +23,15 @@ public class Grado {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_turno")
 	private Turno turno;
+	
+	
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
 
 	public Grado () {
 		

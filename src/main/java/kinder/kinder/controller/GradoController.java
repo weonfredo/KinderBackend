@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kinder.kinder.entity.Grado;
+import kinder.kinder.request.GradoRequest;
 import kinder.kinder.service.IGradoService;
 
 @RestController
@@ -29,14 +30,14 @@ public class GradoController {
 	}
 	
 	@PostMapping("/registro")
-	 public Grado guardar(@RequestBody Grado grado) {
+	 public void guardar(@RequestBody GradoRequest grado) {
 		servicioGrado.guardar(grado);
-		 return grado;
+		 
 	 }
 	 @PutMapping("/modificar")
-	 public Grado modificar(@RequestBody Grado grado) {
+	 public void modificar(@RequestBody GradoRequest grado) {
 		 servicioGrado.modificar(grado);
-		 return grado;
+		 
 	 }
 	 @GetMapping("/buscar/{id}")
 	 public Optional<Grado> buscarId(@PathVariable("id") Integer id){

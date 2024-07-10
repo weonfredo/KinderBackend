@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kinder.kinder.entity.Aula;
+import kinder.kinder.request.AulaRequest;
 import kinder.kinder.service.IAulaService;
 
 
@@ -30,14 +31,14 @@ public class AulaController {
 	}
 	
 	@PostMapping("/registro")
-	 public Aula guardar(@RequestBody Aula aula) {
-		servicioAula.guardar(aula);
-		 return aula;
+	 public Aula guardar(@RequestBody AulaRequest aula) {
+		return servicioAula.guardar(aula);
+		 
 	 }
 	 @PutMapping("/modificar")
-	 public Aula modificar(@RequestBody Aula aula) {
-		 servicioAula.modificar(aula);
-		 return aula;
+	 public Aula modificar(@RequestBody AulaRequest aula) {
+		 return servicioAula.modificar(aula);
+		 
 	 }
 	 @GetMapping("/buscar/{id}")
 	 public Optional<Aula> buscarId(@PathVariable("id") Integer id){
