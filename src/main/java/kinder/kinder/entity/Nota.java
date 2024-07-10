@@ -32,9 +32,11 @@ public class Nota {
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
     
+    @ManyToOne
+    @JoinColumn(name = "id_periodo", nullable = false)
+    private Periodo periodo;
     
-    
- 
+	
 
 	// Getters y setters
 	public Long getId() {
@@ -75,6 +77,14 @@ public class Nota {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public Periodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
 	}
     
 }

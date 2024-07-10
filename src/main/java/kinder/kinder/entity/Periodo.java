@@ -8,8 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "periodos")
@@ -26,11 +24,9 @@ public class Periodo {
     private String descripcion;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date fechaCierre;
     
  // Getters y setters

@@ -7,11 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,6 +39,11 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_sucursal")
+	private Sucursal sucursal;
+
+	
 
     public Perfil getPerfil() {
 		return perfil;
@@ -125,5 +127,11 @@ public class Usuario implements UserDetails {
 	}
 	public void setEstado(Integer estado) {
 		this.estado = estado;
+	}
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
 	}
 }

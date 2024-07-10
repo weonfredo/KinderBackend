@@ -69,8 +69,6 @@ public class AlumnoService implements IAlumnoService {
         alumno.setEstado_financiero(registro.getEstado_financiero());
         alumno.setAula(aula);
         alumno.setApoderado(apoderado);
-        alumno.setGrado(grado);
-        alumno.setSeccion(seccion);
 
         alumnoRepository.save(alumno);
 		
@@ -102,8 +100,6 @@ public class AlumnoService implements IAlumnoService {
         alumno.setEstado_financiero(registro.getEstado_financiero());
         alumno.setAula(aula);
         alumno.setApoderado(apoderado);
-        alumno.setGrado(grado);
-        alumno.setSeccion(seccion);
 
 
         alumnoRepository.save(alumno);
